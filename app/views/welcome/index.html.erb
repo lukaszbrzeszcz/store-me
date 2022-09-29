@@ -1,0 +1,13 @@
+<h1> Welcome Page </h1>
+
+<% if Current.user %>
+  Logged in as: <%= Current.user.name %>
+  Current ip: <%= Current.user.current_sign_in_ip %>
+  Previous ip: <%= Current.user.last_sign_in_ip %>
+  Current sign in at: <%= Current.user.current_sign_in_at %>
+  Last sign in at: <%= Current.user.last_sign_in_at %>
+  <%= button_to "Sign Out", logout_path, method: :delete %>
+<% else %>
+  <%= link_to 'Sign up', register_path %>
+  <%= link_to 'Sign in', login_path %>
+<% end %>

@@ -39,7 +39,6 @@ module Events
     private
 
     def find_or_build_aggregate
-      binding.pry
       self.aggregate = find_aggregate if aggregate_id.present?
       self.aggregate = build_aggregate if self.aggregate.nil?
     end

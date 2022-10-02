@@ -6,12 +6,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    event = Commands::User::Authenticate.call(email: user_params[:email], password: user_params[:password], ip: request.remote_ip)
+    command = Commands::User::Authenticate.call(email: user_params[:email], password: user_params[:password], ip: request.remote_ip)
 
-    session[:user_id] = event.user_id
+    session[:user_id] = command.user_id
     redirect_to root_path
   rescue ActiveModel::ValidationError
-    flash[:error] = event.errors.full_messages
+    flash[:error] = command.errors.full_messages
     @user = User.new
     render 'new'
   end

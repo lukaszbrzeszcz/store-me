@@ -13,6 +13,13 @@ Rails.application.routes.draw do
     namespace 'v1' do
       post 'login', to: 'sessions#create'
       post 'register', to: 'registrations#create'
+      resources :containers, only: [:index]
+    end
+  end
+
+  resources :containers, only: [:new, :create, :index, :show] do
+    member do
+      patch 'store_container', to: 'containers#store_container'
     end
   end
 end

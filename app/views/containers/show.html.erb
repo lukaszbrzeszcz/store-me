@@ -1,0 +1,14 @@
+<%= link_to @container.container_id.present? ? container_path(@container.container_id) : containers_path do %>
+  Go Back
+<% end %>
+
+<h1><%= @container.name %></h1>
+
+<% if @container.image.present? %>
+  <%= image_tag @container.image.image_url %>
+<% end %>
+
+<h2>Content</h2>
+<% @container.containers.includes(:image).each do |container| %>
+  <%= render 'container', container: container %>  
+<% end %>

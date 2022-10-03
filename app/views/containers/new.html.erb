@@ -1,0 +1,12 @@
+<h1>Container</h1>
+<%= simple_form_for @container do |f| %>
+  <%= f.input :name %>
+  <%= f.simple_fields_for :image do |fi| %>
+    <%= fi.input :image, as: :hidden, input_html: { value: @container.image&.cached_image_data } %>
+    <%= fi.input :image, as: :file %>
+  <% end %>
+  <%= f.input :category, collection: Container.categories %>
+  <%= f.input :size, collection: Container.sizes %>
+  <%= f.input :is_item %>
+  <%= f.button :submit %>
+<% end %>

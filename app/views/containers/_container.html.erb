@@ -1,0 +1,17 @@
+<h3><%= container.name %></h3>
+
+<% unless container.is_item? %>
+  <%= link_to container_path(container) do %>
+    Show content
+  <% end %>
+<% end %>
+
+<% if container.image.present? %>
+  <%= image_tag container.image.image_url %>
+<% end %>
+
+<%= simple_form_for container, url: store_container_container_path(container) do |f| %>
+  <%= f.input :container_id, collection: @all_containers.where.not(id: container.id) %>
+  <%= f.button :submit %>
+<% end %>
+<br/>

@@ -57,6 +57,12 @@ gem 'bcrypt', '~> 3.1', '>= 3.1.18'
 # Forms made easy!
 gem 'simple_form', '~> 5.1'
 
+# Shrine is a toolkit for file attachments in Ruby applications
+gem 'shrine', '~> 3.4'
+
+# allows you to declare database triggers in ruby in your models, and then generate appropriate migrations as they change
+gem 'hairtrigger', '~> 0.2.25'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

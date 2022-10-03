@@ -1,0 +1,7 @@
+<h1>Containers</h1>
+<%= link_to new_container_path do %>
+  Add container
+<% end %>
+<% @containers.each do |container| %>
+  <%= render 'container', container: container %>
+<% end %>
